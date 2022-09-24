@@ -14,32 +14,30 @@
  * }
  */
 class Solution {
-    
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
-       List<List<Integer>> list = new ArrayList<>();
-    List<Integer> sub = new ArrayList<>();
-        return calculation(root, targetSum, sub, list);
+        List<List<Integer>> list =  new ArrayList<>();
+        List<Integer> sub = new ArrayList<>();
+        return calculation(root, targetSum, sub,list);
     }
-    public List<List<Integer>> calculation(TreeNode root, int sum, List<Integer> sub, List<List<Integer>> list)
+    public List<List<Integer>> calculation(TreeNode root, int Sum, List<Integer> sub, List<List<Integer>> list)
     {
-        if(root == null){
+        if(root == null)
+        {
             return list;
         }
         sub.add(root.val);
-        if(root.left == null && root.right == null && sum-root.val == 0)
+        if(root.left == null && root.right == null && Sum - root.val == 0)
         {
-            list.add(new ArrayList<Integer>(sub));
-            
-            sub.remove(sub.size()-1);
+            list.add(new ArrayList<>(sub));
+            sub.remove(sub.size() -1);
             return list;
         }
         else
         {
-            calculation(root.left, sum-root.val, sub, list);
-            calculation(root.right, sum - root.val, sub, list);
+            calculation(root.left, Sum - root.val, sub, list);
+            calculation(root.right, Sum - root.val, sub, list);
         }
-        sub.remove(sub.size()-1);
-        System.out.println(sub);
+        sub.remove(sub.size() -1);
         return list;
     }
 }
