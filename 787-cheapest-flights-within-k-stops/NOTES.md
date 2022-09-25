@@ -1,1 +1,1 @@
-​
+​The idea is to apply bellman ford algorithm to find the shortest path between source and destination node. The original bellman ford algorithm states , In a graph of n nodes, if all the edges are relaxed exactly n-1 times, we get the shortest path from source to destination containing atmost n-1 edges or equivalently going through n-2 stops. Hence, this question is a slight modification of bellman ford algorithm where we have atmost k stops or equivalently atmost k+1 edges between source and destination.
