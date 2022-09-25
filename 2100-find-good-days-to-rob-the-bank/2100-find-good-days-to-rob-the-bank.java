@@ -1,55 +1,53 @@
 class Solution {
     public List<Integer> goodDaysToRobBank(int[] security, int time) {
-        List<Integer> list = new ArrayList<>();
-        List<Integer> list1 = new ArrayList<>();
-        list1.add(41);
-        list1.add(56);
-        List<Integer> list2 = new ArrayList<>();
-        list2.add(42);
-        list2.add(67);
-        List<Integer> list3 = new ArrayList<>();
-        list3.add(30000);
-        list3.add(30001);
-        int[] a = {9, 6, 8, 2, 0,1,1,1,2};
-        if(Arrays.equals(a, security))
+         List<Integer> list = new ArrayList<>();
+        int n = security.length;
+        int[] a = new int[n];
+        int[] b = new int[n];
+        a[0] = 0;
+        for(int i = 1; i<n; i++)
         {
-            return new ArrayList<>();
-        }
-        if(time == 10000)
-        {
-            return list3;
-        }
-        if(time == 7397)
-        {
-            return new ArrayList<>();
-        }
-        if(time == 0)
-        {
-            for(int i = 0; i<security.length; i++)
+            if(security[i-1]>=security[i])
             {
-                list.add(i);
+                a[i] = a[i-1] + 1;
             }
-            return list;
-        }
-        else
-        {
-            for(int i = time; i<security.length-time; i++)
+            else
             {
-                if((security[i-time] >= security[i-time +1]) && (security[i-time +1]>=security[i]) &&  (security[i-time + 2]>=security[i]) && (security[i]<=security[i+time-2])&&(security[i]<=security[i+time-1]) && (security[i+time-1] <= security[i+time]))
-                {
+                a[i] = 0;
+            }
+           // System.out.println(a[i]);
+        }
+        b[n-1] = 0;
+        for(int i = n-2; i>=0; i--)
+        {
+            if(security[i+1]>=security[i])
+            {
+                b[i] = b[i+1] + 1;
+            }
+            else
+            {
+                b[i] = 0;
+            }
+            //System.out.println(b[i]);
+        }
+        /*for(int i = 0; i<n; i++)
+        {
+            //System.out.print(b[i]);
+        }
+        System.out.println(" ");
+        for(int i = 0; i<n; i++)
+        {
+            System.out.print(a[i]);
+        }*/
+        
+        for(int i = time; i<n-time; i++)
+        {
+           
+                    if(a[i]>=time && b[i]>=time)
+                    {
                     list.add(i);
-                }
-            }
-        
-        
-        }
-        if(list.equals(list1) == true)
-        {
-            return new ArrayList<>();
-        }
-        if(list.equals(list2) == true)
-        {
-            return new ArrayList<>();
+                    }
+             
         }
         return list;
     }
