@@ -16,15 +16,15 @@ class Solution {
             }
         }
         //System.out.println(list);
-           int j = 0;
            
-        for(int[] q : queries){
+           
+        for(int j = 0; j<queries.length; j++){
              long sum1 = 1;
-            for(int k = q[0]; k<=q[1]; k++)
+            for(int k = queries[j][0]; k<=queries[j][1]; k++)
             {
                 sum1= (sum1*list.get(k)%mod);
             }
-            a[j++] = (int)sum1%mod;
+            a[j] = (int)sum1%mod;
             //System.out.println(a[j]);
         }
         return a;
